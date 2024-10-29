@@ -1,1 +1,44 @@
+Hybrid Switchport on a Port channel
+SW-40G-#conf t
+SW-40G-(conf)#interface port-channel 5
+SW-40G-(conf-if-po-5)#portmode hybrid
+SW-40G-(conf-if-po-5)#switchport
+SW-40G-(conf-if-po-5)#
 
+
+Interface Configuration for LACP Port Channel
+interface TenGigabitEthernet 0/17
+ description CSS-CIX-1-R p6
+ no ip address
+ mtu 12000
+ flowcontrol rx on tx off
+!
+ port-channel-protocol LACP
+  port-channel 3 mode active
+ no shutdown
+!
+interface TenGigabitEthernet 0/18
+ description CSS-CIX-2-R p5
+ no ip address
+ mtu 12000
+ flowcontrol rx on tx off
+!
+ port-channel-protocol LACP
+  port-channel 3 mode active
+ no shutdown
+!
+
+interface Port-channel 3
+ no ip address
+ mtu 12000
+ portmode hybrid
+ switchport
+ no shutdown
+!
+
+interface Vlan 673
+ ip address 10.2.99.2/28
+ tagged TenGigabitEthernet 0/25
+ tagged Port-channel 3
+ shutdown
+!
