@@ -14,7 +14,7 @@ interface TenGigabitEthernet 0/17
  flowcontrol rx on tx off
 !
  port-channel-protocol LACP
-  port-channel 3 mode active
+  port-channel 5 mode active
  no shutdown
 !
 interface TenGigabitEthernet 0/18
@@ -24,11 +24,11 @@ interface TenGigabitEthernet 0/18
  flowcontrol rx on tx off
 !
  port-channel-protocol LACP
-  port-channel 3 mode active
+  port-channel 5 mode active
  no shutdown
 !
 
-interface Port-channel 3
+interface Port-channel 5
  no ip address
  mtu 12000
  portmode hybrid
@@ -39,6 +39,6 @@ interface Port-channel 3
 interface Vlan 673
  ip address 10.2.99.2/28
  tagged TenGigabitEthernet 0/25
- tagged Port-channel 3
+ tagged Port-channel 5
  shutdown
 !
